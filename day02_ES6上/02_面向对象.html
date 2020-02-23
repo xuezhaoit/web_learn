@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 定义父类
+        class Person{
+            constructor(name, age){
+                this.name=name;
+                this.age=age;
+            }
+
+            showName(){
+                alert('我叫：'+ this.name)
+            }
+            
+            showAge(){
+                alert('我的年龄：'+this.age)
+            }
+        }
+
+        // 创建person对象
+        let p = new Person('张三', '18', ' 123 ')
+        // p.showAge()
+        // p.showName()
+
+        // this的注意
+        // document.onclick=p.showName
+        document.onclick=p.showName.bind(p)
+        class Work extends Person{
+            constructor(name, age, job){
+                super(name, age)
+                this.job=job;
+            }
+
+            showJob(){
+                alert('我的工作：'+this.job)
+            }
+        }
+        let w = new Work('张三1', '18', '程序员')
+
+        // w.showJob()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

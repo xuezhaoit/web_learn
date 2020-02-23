@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // // var 测试
+        // var aa = 1 
+        // var aa = "test"
+        // window:alert(aa)
+        // //let 测试
+        // let bb = 1
+        // // let bb = 2 不能重新定义
+        // bb = 2
+        // alert(bb)
+        // //const
+        // const cc = 1
+        // // const cc = 2
+        // // cc = 2
+        // alert(cc)    
+    </script>
+    <script>
+        // 函数
+        // 普通定义1
+        function show(a,b,c) {
+            return a+b
+        }
+        // 普通定义2
+        var show2 = function(a,b,c) {
+            return a+b
+        }
+        // 箭头函数
+        let show3= (a,b,c) => {
+            return a+c
+        }
+        // 默认函数
+        function show4(a,b,c=5) {
+            return a+c
+        }
+        // console.log(show4(1,2))
+        // 参数展开
+        function show5(a,b,...args) {
+            console.log(a,b,args)   
+        }
+
+        // show5(1,2,3,5,6)
+
+        function ouNum(args){
+            console.log(args%2)
+        }
+            // ouNum(10)
+        
+    </script>
+    <script>
+        // 数组
+        var arr = [1,2,3,4,7,8]
+        // map映射
+        function map_test(arr) {
+            var result  = arr.map(function (value,index,arr) {
+                console.log(value,index,arr)
+                return value >4
+            })
+            alert(result)
+            
+        }
+        // map_test(arr)
+        // filte
+        function filter_test(arr){
+            var result  = arr.filter(function(value,index,arr){
+                console.log(value,index,arr)
+                return value >4
+            })
+            alert(result)
+        }
+        // filter_test(arr)
+
+        function forEach(params) {
+            var result  = arr.forEach(function(value,index,arr){
+                console.log(value,index,arr)
+            })
+            alert(result)
+        }
+        // forEach(arr)
+        
+        function reduce(arr) {
+            var result  = arr.reduce(function(temp,value,index){
+                console.log(temp,value,index)
+                if (index == arr.length-1) {
+                    return temp/arr.length
+                } else {
+                    return temp + value
+                }
+                
+            })
+            alert(result)
+        }
+        // reduce(arr)
+
+    </script>
+    <style>
+        div{width: 200px;height: 200px;background-color:#8f8f8f;float: left;margin: 10px;}
+    </style>
+    <script>
+        // window.onload= function () {
+        //     var arr_div  =  document.getElementsByTagName("div");
+        //     Array.from(arr_div).forEach(function(ctrl){
+        //         ctrl.style.background="blue"
+        //     })
+        // }
+        let json = {name:"blue",age:"18"}
+        // alert(`我是：${json.name},今年${json.age}`)
+    </script>
+    <script>
+        class Person{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            showName(){
+                alert(this.name)
+            }
+        }
+        // let p = new Person("blue","age")
+        // p.showName()
+        // 继承
+        class Worker extends Person{
+            constructor(name,age,job){
+                super(name,age)
+                this.job=job
+            }
+            showJob(){
+                alert(this.job)
+            }
+        }
+        let w = new Worker("blue","18","web")
+        w.showJob()
+    </script>
+</head>
+<body>
+    <div class="">1</div>
+    <div class="">1</div>
+    <div class="">1</div>
+    <div class="">1</div>
+    <div class="">1</div>
+</body>
+</html>

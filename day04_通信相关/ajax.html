@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#btn1').click(function () {
+                $.ajax({
+                    url:'1.php',
+                    data:{a:1,b:2},
+                    type:'get',
+                    dataType:'text',
+                    success(str){
+                        alert(str)
+                    },
+                    error(){
+                        alert('请求失败')
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <input id="btn1" type="button" value="按钮">
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery.js"></script>
+    <title>Document</title>
+    <script>
+        async function show(params) {
+            let data1 = await $.ajax({url:'../www/1.txt',dataType:'json'});
+            if (data1.aa=="123") {
+                let data2 = await $.ajax({url:'../www/2.txt',dataType:'json'})
+                console.log(data2.aa)
+            } else {
+                let data3 = await $.ajax({url:'../www/3.txt',dataType:'json'})
+                console.log(data3.aa)
+            }
+        }
+        show()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

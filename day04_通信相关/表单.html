@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>form表单</title>
+    <script>
+        // const $ = function (params) {
+        //     return document.querySelectorAll(params)
+        // }
+        const $ = document.querySelectorAll.bind(document)
+        // window.onload= function (params) {
+        //     let form1 = $("#form1")[0]
+        //     alert(form1)
+        // }
+        
+        window.onload = function (params) {
+            // let form1 = document.getElementById('form1')[0]
+            let form1 = $("#form1")[0]
+            let user1 = document.getElementsByName('user')[0]
+            // alert(form1)
+            form1.onsubmit = function (params) {
+                alert(1)
+                if (user1.value == "") {
+                    alert("姓名不能为空")
+                    return false
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <form id="form1" action="http://localhost/a.php" method="GET">
+        用户名：<input type="text" name="user" value="">
+        密码：<input type="text" name="pwd" value="">
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

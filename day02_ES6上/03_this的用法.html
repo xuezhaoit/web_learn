@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 普通函数
+        function test1(params) {
+            alert(this)
+        }
+
+        // document.onclick=test1
+
+        let arr = [1,3,4,5]
+        arr.a=test1
+        arr.a()
+
+        // 箭头函数
+        arr.b= ()=>{
+            alert(this)
+        }
+        arr.b()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

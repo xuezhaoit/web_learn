@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function sleep(sec) {
+            return new Promise((resolve,regist)=>{
+                setTimeout(()=>{
+                    resolve()
+                },sec*1000)
+            })
+        }
+        async function show(params) {
+            await sleep(2);
+            alert('a')
+            await sleep(2)
+            alert('b')
+        }
+        show()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery.js"></script>
+    <title>Document</title>
+    <script>
+        let p1 = new Promise((resolve,regist)=>{
+            $.ajax({
+                url:'../www/1.txt',
+                dataType: 'json',
+                success(json){
+                    console.log(json)
+                    resolve(json)
+                },
+                error(error){
+                    console.log(error)
+                    regist(error)
+                }
+            })
+        })
+        let p2 = new Promise((resolve,regist)=>{
+            $.ajax({
+                url:'../www/2.txt',
+                dataType: 'json',
+                success(json){
+                    console.log(json)
+                    resolve(json)
+                },
+                error(error){
+                    console.log(error)
+                    regist(error)
+                }
+            })
+        })
+        let p3 = new Promise((resolve,regist)=>{
+            $.ajax({
+                url:'../www/3.txt',
+                dataType: 'json',
+                success(json){
+                    console.log(json)
+                    resolve(json)
+                },
+                error(error){
+                    console.log(error)
+                    regist(error)
+                }
+            })
+        })
+        Promise.all([p1,p2,p3]).then(arr=>{
+            let [json_p1,json_p2,json_p3] = arr
+          alert('成功')  
+        },err=>{
+            alert('失败')
+        })
+    </script>
+</head>
+<body>
+    
+    
+</body>
+</html>
