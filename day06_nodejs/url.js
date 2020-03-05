@@ -1,0 +1,2 @@
+const url = require('url')
+console.log(url.parse('https://fanyi.baidu.com/translate?aldtype=16047&query=Schedule+As+Tech+Debt+Stories%0D%0A&keyfrom=baidu&smartresult=dict&lang=en2zh#en/zh/Address%20if%20we%20have%20time%20to%20do',true))
