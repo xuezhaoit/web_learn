@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            let otxt = document.getElementById("txt")
+            let obtn = document.getElementById("btn")
+            otxt.value = localStorage.txt || ""
+            otxt.oninput= function (params) {
+                localStorage.txt = otxt.value
+            }
+            
+            obtn.onclick=function(){
+                otxt.value=""
+                delete localStorage.txt
+            }
+
+        }
+                
+        
+    </script>
+</head>
+<body>
+    <textarea id="txt" cols="28" rows="28" ></textarea>
+    <input type="button" value="发送" id="btn">
+</body>
+</html>

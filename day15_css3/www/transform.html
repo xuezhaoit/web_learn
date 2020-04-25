@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 100px;
+            margin: 0px auto;
+            background-color: rgba(0,0,0,1);
+            transform: rotate(0deg);
+            transition: 1s all ease;
+        }
+        .box:active{transform: rotate(90deg);}
+        .box1{
+            width: 200px;
+            height: 100px;
+            background-color: chartreuse;
+            margin: 0px auto;
+            transform: scale(1,1);
+        }
+        .box1:active{transform: scale(2,1)}
+        .box2{
+            width: 200px;
+            height: 100px;
+            background-color: chartreuse;
+            margin: 0px auto;
+            transform: translate(0,0)
+        }
+        .box2:active{transform: translate(0,200px)}
+        .box3{
+            width: 200px;
+            height: 100px;
+            background-color: chartreuse;
+            margin: 0px auto;
+            transform: skew(0deg)
+        }
+        .box3:active{transform: skew(15deg)}
+
+    </style>
+</head>
+<body>
+    <div class="box">
+    123123
+    </div><br>
+    <div class="box1">
+    123123
+    </div><br>
+    <div class="box2">
+    123123
+    </div><br>
+    <div class="box3">
+    123123
+    </div>
+</body>
+</html>
