@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log(localStorage);
+        localStorage.a="123"
+        console.log(localStorage.b);
+        
+        console.log(localStorage.key);
+        
+        for (let index = 0; index < localStorage.length; index++) {
+            
+            let key = localStorage.key(index)
+            console.log(key+":"+localStorage[key]);   
+        }
+        delete localStorage.b
+        console.log(localStorage.b);
+                
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

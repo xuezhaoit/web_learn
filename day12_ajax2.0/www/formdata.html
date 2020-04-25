@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../js/jquery.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function (params) {
+            // let btn_sub = document.getElementById('submit')
+            $('#submit').click(function (params) {
+                let fd = new FormData()
+
+                fd.set('username',$('#username').val())
+                fd.append('username','blue1')
+                
+                // console.log(fd.values());
+                
+                console.log(fd.getAll('username'));
+                
+                console.log(fd);
+                
+            })
+        }
+    </script>
+</head>
+<body>
+    用户名：<input type="text" name="username" id="username"><br/>
+    密码：<input type="text" name="passwd" id="passwd"><br/>
+    <input type="button" value="提交" id="submit">
+</body>
+</html>

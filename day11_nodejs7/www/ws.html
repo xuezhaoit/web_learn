@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://localhost:8080/socket.io/socket.io.js" charset="utf-8"></script>
+    <title>Document</title>
+    <style>
+        ul{width: 300px; height: 300px; border: 1px solid black;}
+        .me{ color: green; }
+        .div_discontent{width: 300;height: 100; color: red; display: none;}
+        
+    </style>
+    <script >
+        let sock = io.connect('ws://localhost:8080/');
+        sock.on('disconnect',()=>{
+            document.getElementsByClassName( "div_discontent")[0].style.display="block"
+        })
+        sock.on('connect',()=>{
+            document.getElementsByClassName( "div_discontent")[0].style.display="none"
+        })
+        window.onload=function(){
+            let btn_submit = document.getElementById('btn_submit')
+            let texta = document.getElementById('texta')
+            // let oul = document.getElementsByTagName('ul')
+            let oul1 = document.getElementById('oul')
+            btn_submit.onclick= function (params) {
+                // 发送
+                sock.emit('msg',texta.value)
+                // 自我展示
+                let oli = document.createElement('li')
+                oli.innerText = texta.value
+                oli.className = 'me'
+                oul1.appendChild(oli)
+                // 清空
+                texta.value = ""
+            }
+                
+            sock.on('msg',(str)=>{
+                let oli = document.createElement('li')
+                oli.innerText = str
+                oul1.appendChild(oli)
+            })
+            
+
+        }
+    </script>
+</head>
+<body>
+    <div class="div_discontent">
+        断开连接
+    </div>
+    <ul id="oul">
+
+    </ul>
+    <textarea name="texta" id="texta" cols="60" rows="10"></textarea>
+    <input type="button" value="发送" id="btn_submit">
+</body>
+</html>

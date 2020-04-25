@@ -4,46 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../../js/jquery.js"></script>
-    <script src="../../js/ajax.js"></script>
     <title>Document</title>
     <script>
-        let username= $("#username").val()
-        let passwd = $("#passwd").val()
+        $(function (){
+        
         $("#btn_reg").click(function (params) {
+            let username= $("#username").val()
+            let passwd = $("#passwd").val()
             $.ajax({
                 url:"/register",
                 data:{username:username,passwd:passwd},
-                type:'post',
-                dataType:'json',
-                success:function(json){
-                    if (json.error == 1) {
-                        alert('注册失败')
-                    } else {
-                        alert('注册成功')
+                dataType: 'json',
+                success(json){
+                    alert(json)
+                    if(json.err){
+                    alert('注册失败'+json.msg);
+                    }else{
+                    alert('注册成功');
                     }
                 },
-                error:function(err){
-                    alert(err)
+                error(err){
+                    alert(err);
+                    alert('失败');
                 }
             })
         })
         $("#btn_login").click(function (params) {
+            let username= $("#username").val()
+            let passwd = $("#passwd").val()
             $.ajax({
                 url:'/login',
                 data:{
                     username:username,
                     passwd:passwd
                 },
-                type:'post',
                 dataType:'json',
-                success:function(data){
-                    alert(data)
+                success(json){
+                    alert(json)
+                    if(json.err){
+                    alert('登录失败'+json.msg);
+                    }else{
+                        alert('登录成功');
+                    }
                 },
-                error:function(err){
-                    alert(err)
+                error(err){
+                    alert(err);
+                    alert('失败');
                 }
+
+                
             })
         })
+        })
+        
         
     </script>
 </head>

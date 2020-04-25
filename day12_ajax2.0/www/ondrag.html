@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{width: 400px; height: 300px; border: 1px solid blue; background-color: cadetblue; line-height: 300px; text-align: center;left: 40%;position: absolute;}
+    </style>
+    <script>
+        window.onload=function(){
+            let obj = document.getElementsByClassName('box')[0]
+            obj.ondragenter=function (){
+                obj.innerHTML='松手上传';
+            };
+            obj.ondraglive = function () {
+                obj.innerHTML='请拖入'
+            }
+            obj.ondragover = function (params) {
+                console.log('aaa');
+                return false
+                
+            }
+            obj.ondrop = function (files) {
+                console.log(files);
+                return false
+                
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+       请拖入
+    </div>
+</body>
+</html>

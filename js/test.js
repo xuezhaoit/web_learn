@@ -1,8 +1,5 @@
-let arr = []
-let name = '1234'
-let data = {a:'123',b:'1234',c:'12345'}
-// console.log(`${name}`)
-for (let key in data) {
-    arr.push(`${key}=${data[key]}`)
-}
-console.log(arr.join("&"))
+function test1(value) {
+    return /^[a-zA-Z]+(([\s.,]|,\s)?[a-zA-Z]+)*$/g.test(value);
+}   
+console.log(test1("Jack, jqd jafd"));
+// console.log(//test("Jack, jqd jafd"));

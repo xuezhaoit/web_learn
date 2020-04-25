@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>Document</title>
+    <script>
+        window.onload= function (params) {
+            
+            let username = document.getElementById('username')
+            let passwd = document.getElementById('passwd')
+            let btn_sub = document.getElementById('submit')
+            let f1 = document.getElementById('f1')
+            
+            btn_sub.onclick= function (params) {
+                let f_data = new FormData();
+                f_data.set('username',username.value)
+                f_data.set('passwd',passwd.value)
+                console.log(f1.files);
+                
+                let oajax = new XMLHttpRequest()
+                let arr_ = []
+                f_data.forEach((value, key)=>{
+                    arr_.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+                })
+                Array.from(f1.files).forEach(file=>{
+                    f_data.append('f1', file)
+                })
+                console.log(arr_);
+
+                // get
+                // oajax.open('GET',`http://localhost:8080/api/${arr_.join('&')}`, true)
+                // oajax.send()
+                // post
+                oajax.open('POST','http://localhost:8080/api/', true)
+                // oajax.setRequestHeader("Access-Control-Allow-Origin: *");
+                // oajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                oajax.send(f_data)
+
+                oajax.onreadystatechange= function (params) {
+                    if (oajax.readyState == 4 ) {
+                        if (oajax.status>=200 && oajax.status< 300 || oajax.status == 304) {
+                            alert('成功')
+                        } else {
+                            alert('失败')
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    用户名：<input type="text" name="username" id="username"><br/>
+    密码：<input type="text" name="passwd" id="passwd"><br/>
+    文件<input type="file" name="f1" id="f1"><br>
+    <input type="button" value="提交" id="submit">
+</body>
+</html>
