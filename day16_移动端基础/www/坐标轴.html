@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background-color: crimson;
+            transition: 2s all ease;
+            transform: perspective(700px) rotateX(0deg);
+        }
+        .box:active{transform: perspective(700px) rotateX(90deg);}
+        .box1{
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background-color: crimson;
+            transition: 2s all ease;
+            transform: perspective(700px) rotateZ(0deg);
+        }
+        .box1:active{transform: perspective(700px) rotateZ(90deg);}
+
+    </style>
+</head>
+<body>
+    <div class="box">123</div>
+    <div class="box1">123</div>
+    <div class="box2">123</div>
+    
+</body>
+</html>

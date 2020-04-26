@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: crimson;
+            border: black 1px;
+            transform: perspective(700px) rotateX(0deg) rotateY(0deg);
+             /* 父级脱离限制 */
+             transform-style: preserve-3d;
+            transition:2s all ease;
+            position: relative;
+        }
+        .box:active{transform: perspective(700px) rotateX(360deg) rotateY(180deg);}
+       
+        .box div{width: 200px; height: 200px; position: absolute; left: 0px; top: 0px;  }
+        div.font{transform: translateZ(100px);background:rgba(0,255,0,0.5)}
+        div.back{transform: translateZ(-100px);background:rgba(0,255,0,0.5)}
+        div.left{transform: rotateY(-90deg) translateZ(100px) ;background:rgba(0,100,0,0.5)} 
+        div.right{transform: rotateY(90deg) translateZ(100px) ;background:rgba(0,100,0,0.5)} 
+        div.top{transform: rotateX(90deg) translateZ(100px) ;background:rgba(0,200,0,0.5)} 
+        div.down{transform: rotateX(-90deg) translateZ(100px) ;background:rgba(0,200,0,0.5)} 
+
+
+       
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="font">前</div>
+        <div class="back">后</div>
+        <div class="left">左</div>
+        <div class="right">右</div>
+        <div class="top">上</div>
+        <div class="down">下</div>
+    </div>
+    
+</body>
+</html>

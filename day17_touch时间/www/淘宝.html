@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin: 0;}
+        header{width: 48rem; height: 5.5rem; background-color: #fe5400; overflow:hidden; position:relative; z-index:99;}
+        html{ font-size: 10px;}
+        header h1 {width: 4.4rem; height: 3.7rem; background-image: url(../img/logo.png) ; text-indent:-9999rem; margin-left: 0.6rem;margin-top: 1rem; background-size: 100% 100%;}
+    </style>
+    <script>
+        window.onresize=function(){ 
+            document.documentElement.style.fontSize = document.documentElement.clientWidth/48 + "px"
+        }
+        window.onresize()
+    </script>
+</head>
+<body>
+    <header>
+        <h1>淘宝网</h1>
+    </header>
+    <section></section>
+    <nav></nav>
+</body>
+</html>
