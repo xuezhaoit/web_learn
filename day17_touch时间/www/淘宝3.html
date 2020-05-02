@@ -25,6 +25,63 @@
             document.documentElement.style.fontSize = document.documentElement.clientWidth/48 + "px"
         }
         window.onresize()
+        // 
+        window.onload=function(){
+            //  banner 对象
+            let oBanner = document.getElementsByClassName("banner")[0]
+            // ul
+            let oul = oBanner.children[0]
+            // 监听事件
+            let x = 0
+            let offsetwith = oul.children[0].offsetWidth
+            
+            let y = 0
+            oBanner.addEventListener('touchstart', function(ev){
+                // 起始位置
+               
+                console.log(ev.targetTouches[0].clientX);
+                
+                let disx = ev.targetTouches[0].clientX - x
+                let disy = ev.targetTouches[0].clientY - y
+                let dis = ""
+                // 移动事件
+                function touchMove(ev) {
+                    if (dis == "") {
+                        if (Math.abs(ev.targetTouches[0].clientX - disx) >= 5) {
+                            dis = "x"
+                            
+                        } else if(Math.abs(ev.targetTouches[0].clientY - disy) >= 5) {
+                            dis = 'y'
+                        }
+                    } else {
+                        if (dis == 'x' ) {
+                            let n = Math.round((ev.targetTouches[0].clientX - disx) / offsetwith)
+                            x = n* offsetwith  ;
+                            
+
+                        } else if (dis == 'y') {
+                            y = ev.targetTouches[0].clientY - disy
+                        }
+                       
+                        
+                        oul.style.transform = `translate(${x}px, ${y}px)`
+                        oul.style.transition='0.3s all ease';
+
+                    }
+                }
+
+                function touchEnd(ev) {
+                    oBanner.removeEventListener('touchmove', touchMove)
+                    oBanner.removeEventListener('touchend',touchEnd)
+                    
+                }
+                // touchMove
+                oBanner.addEventListener('touchmove', touchMove)
+                // 结束事件
+                oBanner.addEventListener('touchend',touchEnd)
+                
+            })
+        }
     </script>
 </head>
 <body>

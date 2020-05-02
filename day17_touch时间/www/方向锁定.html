@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{width: 100px; height: 100px; background-color: #cccccc; transform: translate(0px, 0px);}
+    </style>
+    <script>
+        window.onload=function(){
+            let oBox = document.getElementsByClassName ("box")[0]
+            oBox.addEventListener('touchstart',function (ev) {
+                let x =0
+                let y= 0
+                let dis_offset = "" // x代表横向；y代表纵向
+                let disX = ev.targetTouches[0].clientX - oBox.offsetLeft
+                let disY = ev.targetTouches[0].clientY - oBox.offsetTop
+                function touchMove_fun(ev) {
+                   let setX = ev.targetTouches[0].clientX - disX 
+                   let setY = ev.targetTouches[0].clientY - disY
+                   console.log(dis_offset);
+                   console.log("");
+                   console.log( Math.abs(setX));
+                   console.log(Math.abs(setY));
+                   
+                   if (dis_offset == "") {
+                        if ( Math.abs(setX) > 5) {
+                            console.log(111);
+                            
+                            dis_offset="x"
+                            
+                        } else if( Math.abs(setY) > 5) {
+                            console.log(222);
+                            
+                            dis_offset="y"
+                                
+                        }
+                   } else {
+                       
+                        if (dis_offset == "x") {
+                            x = setX
+                        } else if (dis_offset == "y") {
+                            y = setY
+                        }
+                        oBox.style.transform = `translate(${x}px,${y}px)`
+                   }
+                   
+                    // oBox.style.transform = `translate(${setX}px,${setY}px)`
+                    // oBox.style.left = (ev.targetTouches[0].clientX - disX ) +"px"
+                    // oBox.style.top = (ev.targetTouches[0].clientY - disY) +'px'
+                }
+
+                function touchEnd_fun(ev) {
+                    oBox.removeEventListener('touchmove',touchMove_fun)
+                    oBox.removeEventListener('touchend',touchEnd_fun)
+                }
+                // 移动事件 
+                oBox.addEventListener('touchmove', touchMove_fun)
+                // 结束事件
+                oBox.addEventListener('touchend', touchEnd_fun)
+
+                
+            })            
+        }
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

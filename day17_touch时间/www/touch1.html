@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{width: 100px; height: 100px; background-color: #cccccc; position: relative;}
+    </style>
+    <script>
+        window.onload=function(){
+            let oBox = document.getElementsByClassName ("box")[0]
+            console.log(oBox);
+            oBox.addEventListener('touchstart',function (ev) {
+                console.log(123);
+                
+                let disX = ev.targetTouches[0].clientX - oBox.offsetLeft
+                let disY = ev.targetTouches[0].clientY - oBox.offsetTop
+
+                function touchMove_fun(ev) {
+                    console.log(222);
+                    console.log((ev.targetTouches[0].clientX - disX ) +"px");
+                    
+                    oBox.style.left = (ev.targetTouches[0].clientX - disX ) +"px"
+                    oBox.style.top = (ev.targetTouches[0].clientY - disY) +'px'
+                }
+
+                function touchEnd_fun(ev) {
+                    oBox.removeEventListener('touchmove',touchMove_fun)
+                    oBox.removeEventListener('touchend',touchEnd_fun)
+                }
+                // 移动事件 
+                oBox.addEventListener('touchmove', touchMove_fun)
+                // 结束事件
+                oBox.addEventListener('touchend', touchEnd_fun)
+
+                
+            })            
+        }
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

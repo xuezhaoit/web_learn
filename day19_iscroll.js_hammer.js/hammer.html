@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/hammerjs/hammer.js"></script>
+    <style>
+        .box{width: 100px; height: 100px; background-color: #8f8f8f8f; margin: 0 auto;}
+    </style>
+    <script>
+        window.onload=function(){
+
+            let oBox=document.querySelector('.box');
+            console.log(oBox);
+            
+            let hammer=new Hammer(oBox);
+    
+            hammer.on('tap', ev=>{
+                console.log('tap');
+                
+                console.log(ev.center.x, ev.center.y);
+            });
+            hammer.on('press',ev=>{
+                console.log('press');
+                
+            })
+
+        }
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
