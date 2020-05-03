@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <script src="./node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="./node_modules/hammerjs/hammer.js" charset="utf-8"></script>
+    <style media="screen">
+    * {margin:0; padding:0; list-style:none}
+      .page .nav{width: 100%; height: 42px; position: relative; overflow: hidden; }
+      .active{color: red;}
+      .page .nav .nav_content{width: 50px; height: 40px; border-right: black solid 1px ; border-bottom: black solid 1px ; text-align: center; line-height: 40px;  display: inline-block;}
+      .page .wrap{width: 100%; height: 304px; position: relative; overflow: hidden; }
+      .page .wrap .content{width: 100px; height: 300px; border: black solid 1px ; text-align: center; line-height: 40px;  display: inline-block;}
+      
+    </style>
+    <script>
+    window.onload=function (){
+        let nav_contestList = document.getElementsByClassName('nav_content')
+        let nav = document.getElementsByClassName('nav')[0]
+        let warp = document.querySelector('.wrap')
+        console.log(warp);
+        
+        Array.from(nav_contestList).forEach((ctrl,index) =>{
+          console.log(ctrl);
+          let hammer = new Hammer(ctrl)
+          hammer.on('tap',ev=>{
+             console.log(index);
+            //  ctrl.className="active"
+            goOn(index)
+          })
+
+          function goOn(index) {
+            // 清空样式
+            Array.from(nav_contestList).forEach(ctrl=>{
+              ctrl.style.color = "black"
+            })
+            // 选中样式
+            nav_contestList[index].style.color="red"
+
+            // 平移
+            leftw= -index*50
+            // nav.style.transform=`translateX(${leftw}px)`;
+
+            // 内容平移
+            warp.style.transition='0.6s all ease';
+            console.log(-100*index);
+        
+            warp.style.transform=`translateX(${-100*(index)}px)`;
+
+          }
+          
+        })
+    };
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <div class="nav">
+        <div class="nav_content">111</div><div class="nav_content">222</div><div class="nav_content">333</div><div class="nav_content">444</div><div class="nav_content">555</div><div class="nav_content">666</div><div class="nav_content">777</div><div class="nav_content">888</div>
+      </div>
+      <div class="wrap">
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+    </div>
+  </body>
+</html>
