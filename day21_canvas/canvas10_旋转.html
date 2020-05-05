@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: black;text-align: center; }
+        #ocanvas{ background-color: #ffffff;}
+    </style>
+    <script>
+        window.onload=function(){
+            /** @type {HTMLCanvasElement} */
+            let ocanvas = document.getElementById('ocanvas');
+            let gd = ocanvas.getContext('2d')
+            
+           gd.rotate(30/180*Math.PI)
+           gd.fillStyle='red'
+           gd.fillRect(200,200,100,50)
+        }
+    </script>
+</head>
+<body>
+    <canvas id="ocanvas" width="800" height="600"></canvas>
+</body>
+</html>

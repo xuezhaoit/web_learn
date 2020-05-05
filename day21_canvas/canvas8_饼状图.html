@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: black;text-align: center; }
+        #ocanvas{ background-color: #ffffff;}
+    </style>
+    <script>
+        window.onload=function(){
+            /** @type {HTMLCanvasElement} */
+            let ocanvas = document.getElementById('ocanvas');
+            let gd = ocanvas.getContext('2d')
+            gd.strokeStyle='blue'
+            // 角度 转π
+            function ange(n) {
+                return n*Math.PI/180
+            }
+            
+            // 圆心初始值
+            let caX = 200 , caY = 200 , r=100
+            // canvasAnge()
+            function caAnge(startAnge, endAnge, color) {
+                // 计算坐标 起始
+                // x/y= cos
+                console.log(startAnge);
+                console.log(endAnge);
+                
+                let x = Math.cos(ange(startAnge))*r+caX
+                let y = Math.sin(ange(startAnge))*r+caY
+                gd.beginPath();
+                // 划线
+                gd.moveTo(caX,caY)
+                gd.lineTo(x,y)
+
+                gd.arc(caX,caY,r,ange(startAnge),ange(endAnge),false)
+
+                gd.closePath()
+                gd.fillStyle=color
+                gd.fill()
+            }
+            // 数据
+            let datas = [
+                { data:100 ,color:'red' },
+                { data:200 ,color:'green' },
+                { data:300 ,color:'blue' }
+            ]
+            // 总和
+            let sum = 0
+            datas.forEach(item=>{
+                sum += item.data
+            })
+            // 
+            let caAnges = 0 
+            datas.forEach(item=>{
+                caAnges_end = item.data/sum*360 + caAnges
+                console.log("123："+caAnges);
+                console.log("123："+caAnges_end);
+                
+                caAnge(caAnges,caAnges_end, item.color)
+                caAnges = caAnges_end
+            })
+        }
+    </script>
+</head>
+<body>
+    <canvas id="ocanvas" width="800" height="600"></canvas>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: black;text-align: center; }
+        #ocanvas{ background-color: #ffffff;}
+    </style>
+    <script>
+        window.onload=function(){
+            /** @type {HTMLCanvasElement} */
+            let ocanvas = document.getElementById('ocanvas');
+            let gd = ocanvas.getContext('2d')
+            
+            gd.strokeRect(100,100,200,100)
+            
+            console.log( ocanvas.offsetWidth );
+            console.log( ocanvas.offsetHeight );
+            let left = 100
+            setInterval (() => {
+                gd.clearRect(0,0,ocanvas.offsetWidth,ocanvas.offsetHeight)
+                left += 5
+                gd.strokeRect(left,100,200,100)
+            }, 16);
+            // gd.clearRect(0,0,400,400)
+
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="ocanvas" width="800" height="600"></canvas>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: black;text-align: center; }
+        #ocanvas{ background-color: #ffffff;}
+    </style>
+    <script>
+        window.onload=function(){
+            let ocanvas = document.getElementById('ocanvas');
+            let gd = ocanvas.getContext('2d')
+            gd.moveTo(100,100)
+            gd.lineTo(150,150)
+            gd.lineWidth='10'
+            gd.strokeStyle='red';
+            gd.stroke();
+            gd.beginPath();         //清楚之前的一切路径，重新开始
+            gd.moveTo(200,100)
+            gd.lineTo(250,150)
+            gd.lineWidth='10'
+            gd.strokeStyle='yellow';
+            gd.stroke();
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="ocanvas" width="800" height="600"></canvas>
+</body>
+</html>

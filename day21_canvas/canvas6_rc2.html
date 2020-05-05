@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: black;text-align: center; }
+        #ocanvas{ background-color: #ffffff;}
+    </style>
+    <script>
+        window.onload=function(){
+            /** @type {HTMLCanvasElement} */
+            let ocanvas = document.getElementById('ocanvas');
+            let gd = ocanvas.getContext('2d')
+            gd.strokeStyle='blue'
+            // 角度
+            function ange(n) {
+                return n*Math.PI/180
+            }
+            gd.moveTo(200,200)
+            gd.lineTo(300,200)
+            // gd.stroke()
+            gd.arc(200,200,100,ange(0),ange(60),true)
+            gd.closePath()
+            gd.stroke()
+        }
+    </script>
+</head>
+<body>
+    <canvas id="ocanvas" width="800" height="600"></canvas>
+</body>
+</html>
