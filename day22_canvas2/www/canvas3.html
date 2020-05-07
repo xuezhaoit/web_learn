@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: black;text-align: center; }
+        #ocanvas{ background-color: #ffffff;}
+    </style>
+    <script>
+        window.onload=function(){
+            /** @type {HTMLCanvasElement} */
+            let ocanvas = document.getElementById('ocanvas');
+            let gd = ocanvas.getContext('2d')
+            // 创建图片对象
+            let img = new Image()
+            img.src = '../img/fish1.png'
+            
+            img.onload=function(){
+                // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+                let i = 0, x=0, time =0, pause = false
+                // 画鱼
+                function next() {
+                    // 清空
+                    if ( !pause ) {
+                        gd.clearRect(0, 0, ocanvas.width, ocanvas.height)
+                        // i变化
+                        if ( time % 4 == 0 ) {
+                            if (i < 3) {
+                                i++
+                            } else {
+                                i=0
+                            }
+                            
+                        }
+                        // if(time%4==0){
+                        //     i++;
+                        //     if(i==4)i=0;
+                        // }
+
+                        time++
+                        x += 1.5
+                        console.log(i);
+                        
+                        gd.drawImage(
+                            img,
+                            //sx, sy, sw, sh
+                            0, i*37, 55, 37,
+                            //dx, dy, dw, dh
+                            x, 100, 55, 37
+                        );
+                    }
+                    
+                    requestAnimationFrame(next)
+                }
+                // 调用
+                 requestAnimationFrame(next)
+                //  添加暂停事件
+                document.onclick=function(){
+                    pause =!pause 
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <canvas id="ocanvas" width="800" height="600"></canvas>
+</body>
+</html>

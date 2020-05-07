@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: black;text-align: center; }
+        #ocanvas{ background-color: #ffffff;}
+    </style>
+    <script>
+        window.onload=function(){
+            /** @type {HTMLCanvasElement} */
+            let ocanvas = document.getElementById('ocanvas');
+            let gd = ocanvas.getContext('2d')
+            // 创建图片对象
+            let img = new Image()
+            img.src = '../img/2.jpg'
+            img.onload=function(){
+                // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+                gd.drawImage(img, 
+                //sx, sy, sw, sh
+                428, 43, 200, 200,
+                //dx, dy, dw, dh
+                100, 100, 200, 200)
+            }
+        }
+    </script>
+</head>
+<body>
+    <canvas id="ocanvas" width="800" height="600"></canvas>
+</body>
+</html>
