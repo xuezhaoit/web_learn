@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../node_modules/raphael/raphael.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            let paper=Raphael(0, 0, 800, 600);
+           
+            let cx = 400 
+            let cy = 300
+           
+
+            
+            // 画圆
+            /*
+                r 半径
+                angle 度
+                color 颜色
+            */ 
+           let pathArr = []
+            function createCir(r, angleitem, color ){
+                let path=paper.path();
+                
+                function cCir(r, angleitem, color) {
+                    let arr = []
+                    let angel = angleitem/180 * Math.PI
+                    let rx ,ry 
+                    rx =cx+ r* Math.sin(angel)
+                    ry =cy- r* Math.cos(angel)
+                    arr = [`M ${cx} ${cy-r} A ${r} ${r} 0 ${angleitem>180?1:0} 1 ${rx} ${ry}`]
+                    path.attr({'stroke-width': 20, 'stroke': color});
+                    path.animate({path: arr.join(' ')}, 500, 'bounce');
+                }
+                path.cCir=cCir
+                return path
+                
+            }
+
+            setInterval(function name(params) {
+                let oDate=new Date();
+                if (pathArr.length == 0) {
+                    pathArr=[
+                        createCir(200, oDate.getHours()/24*360, 'red'),
+                        createCir(150, oDate.getMinutes()/60*360, 'green'),
+                        // 获取分钟
+                        createCir(100, oDate.getSeconds()/60*360, 'blue')
+                    ]
+                } else {
+                    pathArr[0].cCir(200, oDate.getHours()/24*360, 'red')
+                    pathArr[1].cCir(150, oDate.getMinutes()/60*360, 'green')
+                    pathArr[2].cCir(100, oDate.getSeconds()/60*360, 'blue')
+                }
+                
+            },1000)
+        }
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

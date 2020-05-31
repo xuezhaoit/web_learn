@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../node_modules/echarts/dist/echarts.js"></script>
+    <style>
+        .div_flex {width:800px; height:600px; border:1px solid black; margin:10px auto 0;display: flex;}
+        .div_flex .left, .div_flex .right{width:800px; height:600px; border:1px solid black;}
+       
+    </style>
+    <title>Document</title>
+    <script>
+        const $=document.querySelectorAll.bind(document);
+
+        window.onload=function (){
+            let oBox=$('.left')[0];
+            let oBox2=$('.right')[0];
+            let datas=[
+                    {
+                    name: '湖南',
+                    value: 1675,
+                    citys: [
+                        {name: '长沙', value: 816},
+                        {name: '潭州', value: 435},
+                        {name: '桃园', value: 424},
+                    ]
+                    },
+                    {
+                    name: '山东',
+                    value: 1354,
+                    citys: [
+                        {name: '济南', value: 615},
+                        {name: '临沂', value: 443},
+                        {name: '德州', value: 296},
+                    ]
+                    },
+                    {
+                    name: '东北',
+                    value: 374,
+                    citys: [
+                        {name: '黑龙江', value: 112},
+                        {name: '牡丹江', value: 65},
+                        {name: '漠河', value: 197},
+                    ]
+                    }
+                ]
+            // 初始化
+            let oecharts1 = echarts.init(oBox)
+            let oecharts2 = echarts.init(oBox2)
+            
+            // 点击事件
+            oecharts1.on('mouseover',ev=>{
+                console.log(ev.name);
+                serCity(ev.name)
+                
+            })
+            serCity(datas[0].name)
+            function serCity(name) {
+                    let citys=null
+                    datas.forEach(item=>{
+                        if (item.name==name) {
+                            citys= item.citys
+                            let options={
+                                title:{text:`${name}省`},
+                                xAxis:[{   
+                                        data:citys.map(item=>{
+                                            return item.name
+                                        })
+                                    }],
+                                yAxis:[{}],
+                                series:[{
+                                    name:'城市人口',
+                                    type:'bar',
+                                    data: citys.map(item=>{
+                                            return item.value
+                                        })}
+                                ]
+                            }
+                            oecharts2.setOption(options)
+                        }
+                    })
+                }  
+            // 省份的数据
+            let data_p=datas.map(item=>{
+                let data = {
+                    name:item.name,
+                    value:item.value
+                }
+                return data
+            })
+            
+            let options={
+                title:{text:'省份人口'},
+                series:[{
+                    name:'省份比例',
+                    type:'pie',
+                    radius:'40%',
+                    data: data_p}
+                ]
+            }
+            oecharts1.setOption(options)
+
+        }
+     
+    </script>
+</head>
+<body>
+    <div class="div_flex">
+        <div class="left">123</div>
+        <div class="right">123</div>
+    </div>
+</body>
+</html>

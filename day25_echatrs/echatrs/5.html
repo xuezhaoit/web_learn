@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../node_modules/echarts/dist/echarts.js"></script>
+    <style>
+        .box {width:800px; height:600px; border:1px solid black; margin:10px auto 0}
+    </style>
+    <title>Document</title>
+    <script>
+        const $=document.querySelectorAll.bind(document);
+
+        window.onload=function (){
+            let oBox=$('.box')[0];
+            // 初始化
+            let oecharts = echarts.init(oBox)
+            let options={
+                title:{text:'北京人口分布图'},
+                legend:{
+                    data:[{name:'男'},{name:'女'}],
+                    right: 0,
+                    top: '50%',
+                    orient: 'vertical'
+                },
+                xAxis:[
+                    {
+                        
+                        data:['1月','2月','3月','4月','5月','6月']
+                    }
+                ],
+                yAxis:[
+                    {}
+                ],
+                series:[
+                    {
+                        name:'男',
+                        type:'bar',
+                        data:[100,200,300,200,400,100]
+                    },
+                    {
+                        name:'女',
+                        type:'bar',
+                        data:[150,100,100,500,400,200]
+                    },
+                    {
+                        name:'男女比例',
+                        type:'pie',
+                        radius:'30%',
+                        center:['50%','20%'],
+                        data:[{name:'男',value:100},{name:'女',value:100}]
+                    }
+                ]
+            }
+            oecharts.setOption(options)
+
+        }
+     
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../node_modules/echarts/dist/echarts.js"></script>
+    <style>
+        .box {width:800px; height:600px; border:1px solid black; margin:10px auto 0}
+    </style>
+    <title>Document</title>
+    <script>
+        const $=document.querySelectorAll.bind(document);
+
+        window.onload=function (){
+            let oBox=$('.box')[0];
+            // 初始化
+            let oecharts = echarts.init(oBox)
+            let options={
+                title:{text:'北京人口比例',subtext: '2017年度(单位: 万)'},
+                legend:{
+                    data:[{name:'男'},{name:'女'}],
+                    right: 0,
+                    top: '50%',
+                    orient: 'vertical'
+                },
+                series:[
+                    {
+                        name:'11111',
+                        type:'pie',
+                        data:[ {name:'男', value:1200},{name:'女', value:1000}]
+                    }
+                ]
+            }
+            oecharts.setOption(options)
+
+        }
+     
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
