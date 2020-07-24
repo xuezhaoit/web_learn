@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script>
+    window.onload=function(){
+      let oSvg = document.getElementById('svg')
+      // 初始化
+      
+     
+      let datas = [100,200,300,400,500]
+      let angles=[]
+      let cx=400,cy=300,r=200
+      let sum = 0
+      datas.forEach(value=>{
+        sum += value;
+      })
+      datas.forEach(value=>{
+        let angle = value/sum*360
+        angles.push(angle) 
+      })
+      console.log(angles);
+      
+      let now = 0
+      angles.forEach(item=>{
+        // 随机颜色
+        let color=Math.floor(Math.random()*16777216).toString(16);
+        while(color.length<6)color='0'+color;
+        getPie( now, now+item, '#'+color )
+        now += item
+      })
+
+      // console.log(angles.join());
+      // console.log(angles[1]);
+      // console.log(angles[2]);
+      
+      // pie 转换
+      function myPie(n){
+        console.log(n);
+        
+        return n/180*Math.PI
+      }
+      // point
+      function getPoint(angle){
+        // 角度转换
+        let aPie = myPie(angle)
+        console.log(aPie);
+        
+        let x = cx+Math.sin(aPie)*r
+        let y = cy-Math.cos(aPie)*r
+        return {x:x,y:y}
+      }
+    
+      // 获取弧度
+      function getPie( angle1, angle2, color ){
+        let arr = []
+        let oP=document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        oP.style.fill=color
+        oSvg.appendChild(oP)
+        // 第一部分
+        let {x:x1,y:y1}= getPoint(angle1)
+        arr.push(`M ${cx} ${cy} L ${x1} ${y1}`)
+        // 第二部分
+        let {x:x2,y:y2}= getPoint(angle2)
+        // A   arc         rx ry 旋转 大弧标志 镜像标志 终点x 终点y
+        // A ${r} ${r} 0 ${ang2-ang1>=180?1:0} 1 ${x2} ${y2}
+        arr.push(`A ${r} ${r} 0 ${angle2-angle1>180 ? 1 : 0} 1 ${x2} ${y2}`)
+        arr.push('Z')
+      
+        let value = arr.join(' ')
+        console.log(value);
+        oP.setAttribute('d',value)
+
+      }
+      
+    }
+  </script>
+  <body>
+    <svg id="svg" width="800" height="600">
+      <!-- <path id="lil" d="" style="stroke:red; fill:none"></path> -->
+    </svg>
+  </body>
+</html>

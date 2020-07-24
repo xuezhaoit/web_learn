@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./node_modules/raphael/raphael.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload=function (){
+            var page=Raphael(0,0,800,600);
+            var path = page.path('M 200 200 L 400 200 300 100 Z')
+            path.attr('fill', 'yellow')
+            path.attr('stroke','red')
+            path.click(function(){
+                path.animate({path: 'M 300 200 L 300 100 Z'}, 1000, 'bounce');
+                
+            })
+        };
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

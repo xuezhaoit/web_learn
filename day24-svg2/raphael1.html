@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./node_modules/raphael/raphael.js"></script>
+    <title>Document</title>
+    <script>
+        window.onload=function (){
+            var page=Raphael(0,0,800,600);
+
+            page.rect(100,100,400,300).attr('fill', 'yellow').attr('stroke', 'red').click(function (){
+                //this.attr('fill', 'green');
+                this.animate({width: 200, fill: 'green', strokewidth: 20}, 2000, 'elastic');
+            });
+
+        };
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
